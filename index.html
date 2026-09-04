@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bull n Bear Brewery — A Craft Daily · Summit, New Jersey</title>
+<meta name="description" content="Bull n Bear Brewery — small-batch craft beer in downtown Summit, NJ. Read today's edition: the tap list, the tour, the team, and trading hours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BULL n BEAR BREWERY — "The Broadsheet"
+   A single-page brewery site published like a financial daily.
+   ============================================================ */
+
+:root{
+  --paper:#ECE5D3;
+  --paper-2:#E3DAC3;
+  --paper-3:#D8CDB2;
+  --ink:#16120A;
+  --ink-2:#544A38;
+  --ink-3:#7A7059;
+  --red:#A5231A;
+  --red-deep:#7C1810;
+  --up:#1E6B3B;
+  --down:#A5231A;
+  --rule:#241E12;
+  --rule-soft:rgba(36,30,18,.28);
+  --panel-ink:#141009;
+  --panel-paper:#E8E0CC;
+  --panel-ink-2:#B8AE93;
+  --gold:#9A7A2C;
+
+  --display:"Bodoni Moda",Georgia,"Times New Roman",serif;
+  --body:"Source Serif 4",Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+
+  --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2rem;
+  --s5:3rem; --s6:4rem; --s7:6rem; --s8:8rem;
+  --maxw:1240px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:clamp(1rem,.96rem + .2vw,1.075rem);
+  line-height:1.6;
+  font-optical-sizing:auto;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  /* faint newsprint grain */
+  background-image:
+    radial-gradient(rgba(36,30,18,.035) .5px, transparent .6px);
+  background-size:3px 3px;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:.06em}
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.02;margin:0;letter-spacing:-.01em}
+p{margin:0 0 var(--s2)}
+
+::selection{background:var(--red);color:var(--paper)}
+:focus-visible{outline:2.5px solid var(--red);outline-offset:3px}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* scrollbar */
+*{scrollbar-color:var(--red) var(--paper-2)}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--paper-2)}
+::-webkit-scrollbar-thumb{background:var(--red);border:3px solid var(--paper-2)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--s4)}
+@media (max-width:640px){.wrap{padding:0 var(--s3)}}
+
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);padding:.6rem 1rem;z-index:100;font-family:var(--mono);font-size:.8rem}
+.skip:focus{left:var(--s3);top:var(--s3)}
+
+.mono{font-family:var(--mono)}
+.tnum{font-variant-numeric:tabular-nums lining-nums}
+.up{color:var(--up)}
+.down{color:var(--down)}
+
+/* ---------- TICKER ---------- */
+.ticker{
+  background:var(--ink);color:var(--paper);
+  border-bottom:2px solid var(--rule);
+  overflow:hidden;white-space:nowrap;position:relative;
+}
+.ticker::before,.ticker::after{
+  content:"";position:absolute;top:0;bottom:0;width:52px;z-index:2;pointer-events:none;
+}
+.ticker::before{left:0;background:linear-gradient(90deg,var(--ink),transparent)}
+.ticker::after{right:0;background:linear-gradient(270deg,var(--ink),transparent)}
+.ticker__track{display:inline-flex;gap:0;animation:scroll 46s linear infinite;will-change:transform}
+.ticker:hover .ticker__track{animation-play-state:paused}
+.ticker__set{display:inline-flex;flex:none}
+.tick{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;
+  padding:.5rem 1.25rem;display:inline-flex;gap:.5rem;align-items:baseline;flex:none;
+  border-right:1px solid rgba(236,229,211,.14);
+}
+.tick b{font-weight:700}
+.tick .up{color:#57C486}
+.tick .down{color:#E8776E}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker__track{animation:none;white-space:normal}.ticker__set:nth-child(2){display:none}}
+
+/* ---------- MASTHEAD ---------- */
+.masthead{padding-top:var(--s3)}
+.dateline{
+  display:flex;justify-content:space-between;align-items:center;gap:var(--s2);
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-2);border-bottom:1px solid var(--rule-soft);padding-bottom:.6rem;
+}
+.dateline .c{letter-spacing:.24em}
+.title{text-align:center;padding:var(--s3) 0 var(--s2)}
+.title__kern{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(2.6rem,10vw,5.6rem);line-height:.9;letter-spacing:-.02em;
+  display:flex;justify-content:center;align-items:baseline;gap:.22em;flex-wrap:wrap;
+}
+.title__kern .amp{color:var(--red);font-style:italic;font-weight:600}
+.title__sub{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--ink-2);margin-top:.9rem;padding-left:.42em;
+}
+.rule-double{border:0;border-top:3px solid var(--rule);border-bottom:1px solid var(--rule);height:5px;margin:0}
+
+/* ---------- NAV ---------- */
+.nav{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:2px solid var(--rule);}
+.nav__in{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);min-height:52px}
+.nav__brand{font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-.01em;white-space:nowrap}
+.nav__brand .amp{color:var(--red);font-style:italic}
+.nav__links{display:flex;gap:0;flex-wrap:wrap}
+.nav__links a{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  text-decoration:none;padding:.5rem .8rem;color:var(--ink-2);position:relative;
+}
+.nav__links a:hover,.nav__links a[aria-current="true"]{color:var(--ink)}
+.nav__links a[aria-current="true"]::after{
+  content:"";position:absolute;left:.8rem;right:.8rem;bottom:.15rem;height:2px;background:var(--red);
+}
+.nav__cta{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--red);color:var(--paper);text-decoration:none;padding:.55rem .9rem;white-space:nowrap;
+  border:2px solid var(--red-deep);
+}
+.nav__cta:hover{background:var(--red-deep)}
+.nav__toggle{display:none}
+@media (max-width:860px){
+  .nav__links{display:none}
+  .nav__brand{font-size:.95rem}
+}
+
+/* ---------- HERO ---------- */
+.hero{padding:var(--s5) 0 var(--s6);border-bottom:2px solid var(--rule)}
+.hero__grid{display:grid;grid-template-columns:1fr;gap:var(--s5)}
+@media (min-width:960px){.hero__grid{grid-template-columns:1fr 300px;gap:var(--s6)}}
+
+.hero__crestrow{display:flex;align-items:center;justify-content:center;gap:clamp(.5rem,3vw,2rem)}
+.emblem{width:clamp(88px,15vw,150px);height:auto;flex:none}
+.hero__headline{text-align:center;flex:1 1 auto;min-width:0}
+@media (max-width:680px){
+  .hero__crestrow{flex-wrap:wrap;gap:var(--s3)}
+  .emblem{order:1;width:78px}
+  .hero__headline{order:2;flex-basis:100%}
+}
+.hero__h1{
+  font-size:clamp(2.7rem,9vw,6rem);line-height:.92;font-weight:800;letter-spacing:-.025em;
+  text-wrap:balance;
+}
+.hero__h1 em{font-style:italic;font-weight:600}
+.hero__standfirst{
+  max-width:60ch;margin:var(--s3) auto 0;font-size:1.12rem;color:var(--ink);
+  border-top:1px solid var(--rule-soft);padding-top:var(--s3);
+}
+.hero__actions{display:flex;gap:var(--s2);justify-content:center;flex-wrap:wrap;margin-top:var(--s3)}
+.btn{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
+  text-decoration:none;padding:.85rem 1.4rem;border:2px solid var(--rule);color:var(--ink);
+  background:transparent;transition:transform .18s ease, background .18s ease, color .18s ease;
+  display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn--red{background:var(--red);color:var(--paper);border-color:var(--red-deep)}
+.btn--red:hover{background:var(--red-deep)}
+.btn .arr{transition:transform .18s ease}
+.btn:hover .arr{transform:translateX(3px)}
+@media (prefers-reduced-motion:reduce){.btn:hover{transform:none}.btn:hover .arr{transform:none}}
+
+/* glance rail */
+.glance{border:2px solid var(--rule);background:var(--paper-2);padding:var(--s3);align-self:start}
+.glance__h{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);border-bottom:1px solid var(--rule-soft);padding-bottom:.6rem;margin-bottom:.6rem;display:flex;justify-content:space-between}
+.glance__row{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;padding:.5rem 0;border-bottom:1px dotted var(--rule-soft);font-size:.95rem}
+.glance__row:last-of-type{border-bottom:0}
+.glance__row .sym{font-family:var(--mono);font-size:.72rem;color:var(--ink-2);letter-spacing:.04em}
+.glance__row .nm{font-weight:600}
+.glance__status{margin-top:var(--s2);font-family:var(--mono);font-size:.74rem;display:flex;align-items:center;gap:.5rem}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ink-3);flex:none}
+.dot--open{background:var(--up);box-shadow:0 0 0 3px rgba(30,107,59,.18)}
+.dot--closed{background:var(--red)}
+
+/* ---------- SECTION SHELL ---------- */
+.section{padding:var(--s7) 0;border-bottom:2px solid var(--rule)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--s3);margin-bottom:var(--s4);border-bottom:3px solid var(--rule);padding-bottom:var(--s2)}
+.sec-head__t{font-size:clamp(2rem,5.5vw,3.4rem);letter-spacing:-.02em;line-height:.95}
+.sec-head__meta{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);text-align:right;white-space:nowrap}
+.lead-in{max-width:64ch;font-size:1.1rem;margin-bottom:var(--s4)}
+.lead-in .first{
+  float:left;font-family:var(--display);font-weight:800;font-size:3.6rem;line-height:.7;
+  padding:.1em .12em 0 0;color:var(--red);
+}
+
+/* ---------- THE BEERS / MARKET TABLE ---------- */
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;color:var(--ink-2);margin-bottom:var(--s3)}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.table{width:100%;border-collapse:collapse;font-size:.98rem}
+.table thead th{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);
+  text-align:left;padding:.6rem .75rem;border-bottom:2px solid var(--rule);font-weight:500;
+}
+.table thead th.num{text-align:right}
+.tap{border-bottom:1px solid var(--rule-soft);cursor:pointer;transition:background .15s ease}
+.tap>td{padding:.85rem .75rem;vertical-align:baseline}
+.tap:hover,.tap:focus-within,.tap.is-open{background:var(--paper-2)}
+.tap .sym{font-family:var(--mono);font-size:.78rem;color:var(--ink-2);letter-spacing:.03em}
+.tap .nm{font-family:var(--display);font-weight:700;font-size:1.12rem;letter-spacing:-.01em}
+.tap .st{color:var(--ink-2);font-size:.9rem}
+.tap td.num{text-align:right;font-family:var(--mono)}
+.tap .move{white-space:nowrap}
+.tap .move .glyph{font-size:.85em}
+.avail{font-family:var(--mono);font-size:.8rem}
+.spark{display:inline-block;vertical-align:middle;margin-left:.4rem}
+.detail{}
+.detail>td{padding:0 .75rem;border-bottom:1px solid var(--rule-soft)}
+.detail__in{display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .35s cubic-bezier(.16,1,.3,1)}
+.tap.is-open + .detail .detail__in{grid-template-rows:1fr}
+.detail__body{min-height:0;overflow:hidden;padding:0;display:grid;grid-template-columns:1fr;gap:.4rem;max-width:70ch}
+.tap.is-open + .detail .detail__body{padding:0 0 1.1rem}
+.detail__note{font-style:italic}
+.detail__facts{font-family:var(--mono);font-size:.74rem;color:var(--ink-2);letter-spacing:.02em}
+@media (prefers-reduced-motion:reduce){.detail__in{transition:none}}
+.st-mobile{display:none}
+@media (max-width:720px){
+  .table thead .hide-sm{display:none}
+  .tap .col-style{display:none}
+  .st-mobile{display:block}
+}
+
+/* ---------- JOURNEY (ink back page) ---------- */
+.journey{background:var(--panel-ink);color:var(--panel-paper);border-bottom:2px solid #000}
+.journey a{color:var(--panel-paper)}
+.journey .sec-head{border-color:rgba(232,224,204,.4)}
+.journey .sec-head__meta,.journey .lead-in .first{color:#E8776E}
+.journey .lead-in .first{color:#E8776E}
+.journey__grid{display:grid;grid-template-columns:1fr;gap:var(--s6);align-items:center}
+@media (min-width:900px){.journey__grid{grid-template-columns:1.1fr .9fr}}
+.journey__cols{columns:2;column-gap:var(--s4);column-rule:1px solid rgba(232,224,204,.2)}
+@media (max-width:640px){.journey__cols{columns:1}}
+.journey__cols p{break-inside:avoid}
+.pour{width:100%;height:auto}
+.pour-cap{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--panel-ink-2);margin-top:.8rem;text-align:center}
+.callout{
+  margin-top:var(--s4);border:2px solid rgba(232,224,204,.4);padding:var(--s3);
+  display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;
+}
+.callout p{margin:0}
+.callout .btn{color:var(--panel-paper);border-color:var(--panel-paper)}
+.callout .btn:hover{background:var(--panel-paper);color:var(--panel-ink)}
+
+/* ---------- THE TEAM / STAFF BOX ---------- */
+.staff{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0;border-top:1px solid var(--rule-soft)}
+.member{padding:var(--s3);border-bottom:1px solid var(--rule-soft);border-right:1px solid var(--rule-soft)}
+.member__seal{width:64px;height:64px;margin-bottom:var(--s2)}
+.member__seal--lead{width:80px;height:80px}
+.member__name{font-family:var(--display);font-weight:700;font-size:1.35rem;line-height:1}
+.member__role{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:.5rem 0 .7rem}
+.member__bio{font-size:.95rem;color:var(--ink)}
+.member--lead{grid-column:span 1}
+@media (min-width:760px){.member--lead{grid-column:span 2}.member--lead .member__name{font-size:1.9rem}}
+
+/* ---------- VISIT / TRADING HOURS ---------- */
+.visit__grid{display:grid;grid-template-columns:1fr;gap:var(--s5)}
+@media (min-width:900px){.visit__grid{grid-template-columns:1fr 1fr}}
+.hours{border:2px solid var(--rule);background:var(--paper-2)}
+.hours__h{display:flex;justify-content:space-between;align-items:center;padding:var(--s2) var(--s3);border-bottom:2px solid var(--rule);font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.hours__row{display:flex;justify-content:space-between;align-items:baseline;padding:.7rem var(--s3);border-bottom:1px dotted var(--rule-soft);font-family:var(--mono);font-size:.9rem}
+.hours__row:last-child{border-bottom:0}
+.hours__row.is-today{background:var(--red);color:var(--paper)}
+.hours__row.is-today .day{font-weight:700}
+.hours__row .day{letter-spacing:.06em}
+.hours__row.closed{color:var(--ink-2)}
+.visit__facts p{margin:0 0 var(--s2)}
+.visit__facts .lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);display:block}
+.visit__facts .big{font-family:var(--display);font-weight:700;font-size:1.5rem;line-height:1.1}
+.map{border:2px solid var(--rule);width:100%;height:auto;background:var(--paper-2)}
+.visit__note{font-size:.92rem;color:var(--ink-2);font-style:italic}
+
+/* ---------- EVENTS / NOTICES ---------- */
+.notices{display:grid;grid-template-columns:1fr;gap:0;border-top:2px solid var(--rule)}
+@media (min-width:760px){.notices{grid-template-columns:1fr 1fr}}
+.notice{padding:var(--s3);border-bottom:1px solid var(--rule-soft);border-right:1px solid var(--rule-soft)}
+.notice__date{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.notice__t{font-family:var(--display);font-weight:700;font-size:1.3rem;margin:.35rem 0 .5rem;line-height:1.05}
+.notice__d{font-size:.95rem;color:var(--ink)}
+.private{
+  grid-column:1/-1;background:var(--ink);color:var(--paper);padding:var(--s5);
+  display:flex;justify-content:space-between;align-items:center;gap:var(--s4);flex-wrap:wrap;
+}
+.private h3{font-size:clamp(1.6rem,4vw,2.4rem)}
+.private p{margin:.5rem 0 0;max-width:48ch;color:var(--panel-ink-2)}
+.private .btn{color:var(--paper);border-color:var(--paper)}
+.private .btn:hover{background:var(--paper);color:var(--ink)}
+
+/* ---------- FOOTER / COLOPHON ---------- */
+.foot{background:var(--panel-ink);color:var(--panel-paper);padding:var(--s7) 0 var(--s4)}
+.foot a{color:var(--panel-paper)}
+.foot__grid{display:grid;grid-template-columns:1fr;gap:var(--s5)}
+@media (min-width:820px){.foot__grid{grid-template-columns:1.3fr 1fr 1fr}}
+.foot__title{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:.95}
+.foot__title .amp{color:#E8776E;font-style:italic}
+.foot__tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--panel-ink-2);margin-top:.8rem}
+.foot h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--panel-ink-2);font-weight:500;margin:0 0 var(--s2);border-bottom:1px solid rgba(232,224,204,.2);padding-bottom:.5rem}
+.foot ul{list-style:none;margin:0;padding:0}
+.foot li{padding:.3rem 0}
+.foot__social a{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;padding:.3rem 0}
+.foot__social a:hover{color:#E8776E}
+.news{display:flex;gap:0;margin-top:var(--s2);max-width:340px;border:2px solid var(--panel-paper)}
+.news input{
+  flex:1;background:transparent;border:0;color:var(--panel-paper);padding:.7rem .8rem;font-family:var(--mono);font-size:.8rem;min-width:0;
+}
+.news input::placeholder{color:var(--panel-ink-2)}
+.news input:focus{outline:none;background:rgba(232,224,204,.06)}
+.news button{background:var(--panel-paper);color:var(--panel-ink);border:0;padding:.7rem 1rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap}
+.news button:hover{background:#E8776E;color:var(--panel-ink)}
+.news__msg{font-family:var(--mono);font-size:.74rem;color:#57C486;margin-top:.6rem;min-height:1.2em}
+.colophon{margin-top:var(--s6);border-top:1px solid rgba(232,224,204,.2);padding-top:var(--s3);display:flex;justify-content:space-between;gap:var(--s3);flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--panel-ink-2);text-transform:uppercase}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#taps">Skip to the tap list</a>
+
+<!-- ===================== TICKER ===================== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track" id="ticker">
+    <div class="ticker__set" id="tickerSet"></div>
+    <div class="ticker__set" id="tickerSet2"></div>
+  </div>
+</div>
+
+<!-- ===================== MASTHEAD ===================== -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="dateline">
+      <span id="dateLeft">Vol. I &nbsp;·&nbsp; No. 425</span>
+      <span class="c">Summit, New Jersey</span>
+      <span>Est. 2020 &nbsp;·&nbsp; Price: One Pint</span>
+    </div>
+    <div class="title">
+      <div class="title__kern">
+        <span>Bull</span><span class="amp">n</span><span>Bear</span>
+      </div>
+      <div class="title__sub">Brewery — A Craft Daily</div>
+    </div>
+    <hr class="rule-double">
+  </div>
+</header>
+
+<!-- ===================== NAV ===================== -->
+<nav class="nav" aria-label="Sections">
+  <div class="wrap nav__in">
+    <a class="nav__brand" href="#top">Bull<span class="amp">n</span>Bear</a>
+    <div class="nav__links">
+      <a href="#taps">The Beers</a>
+      <a href="#journey">Our Journey</a>
+      <a href="#team">The Team</a>
+      <a href="#visit">Visit</a>
+      <a href="#events">Events</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav__cta" href="#taps">See What's On Tap</a>
+  </div>
+</nav>
+
+<main id="top">
+<!-- ===================== HERO ===================== -->
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="wrap hero__grid">
+    <div class="hero__lead">
+      <div class="hero__crestrow">
+        <!-- BULL EMBLEM -->
+        <svg class="emblem" viewBox="0 0 200 210" role="img" aria-label="Engraved bull crest">
+          <defs>
+            <pattern id="stipB" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(20)">
+              <circle cx="1" cy="1" r=".7" fill="#16120A"/>
+            </pattern>
+          </defs>
+          <g fill="none" stroke="#16120A">
+            <circle cx="100" cy="102" r="94" stroke-width="2.5"/>
+            <circle cx="100" cy="102" r="87" stroke-width="1"/>
+            <circle cx="100" cy="102" r="83" stroke-width="6" stroke-dasharray="1.2 7"/>
+          </g>
+          <!-- horns -->
+          <g fill="#16120A">
+            <path d="M74 66 C58 50 40 44 26 44 C40 50 50 60 64 78 C69 74 72 70 74 66Z"/>
+            <path d="M126 66 C142 50 160 44 174 44 C160 50 150 60 136 78 C131 74 128 70 126 66Z"/>
+          </g>
+          <!-- ears -->
+          <g fill="#16120A">
+            <path d="M66 78 C54 74 46 78 40 86 C52 88 60 88 70 86Z"/>
+            <path d="M134 78 C146 74 154 78 160 86 C148 88 140 88 130 86Z"/>
+          </g>
+          <!-- face -->
+          <path d="M100 62 C79 62 68 78 68 100 C68 128 82 158 100 170 C118 158 132 128 132 100 C132 78 121 62 100 62Z" fill="#ECE5D3" stroke="#16120A" stroke-width="2.5"/>
+          <!-- shading -->
+          <path d="M100 62 C79 62 68 78 68 100 C68 128 82 158 100 170 C118 158 132 128 132 100 C132 78 121 62 100 62Z" fill="url(#stipB)" opacity=".5"/>
+          <!-- forehead tuft -->
+          <g stroke="#16120A" stroke-width="1.6" fill="none" stroke-linecap="round">
+            <path d="M90 74 C92 82 92 88 90 94"/>
+            <path d="M100 72 L100 92"/>
+            <path d="M110 74 C108 82 108 88 110 94"/>
+          </g>
+          <!-- eyes -->
+          <ellipse cx="83" cy="108" rx="6.5" ry="8" fill="#16120A"/>
+          <ellipse cx="117" cy="108" rx="6.5" ry="8" fill="#16120A"/>
+          <circle cx="85" cy="105" r="1.8" fill="#ECE5D3"/>
+          <circle cx="119" cy="105" r="1.8" fill="#ECE5D3"/>
+          <!-- muzzle -->
+          <path d="M100 128 C86 128 78 138 78 148 C78 160 88 166 100 166 C112 166 122 160 122 148 C122 138 114 128 100 128Z" fill="#ECE5D3" stroke="#16120A" stroke-width="2.2"/>
+          <ellipse cx="90" cy="146" rx="4" ry="5.5" fill="#16120A"/>
+          <ellipse cx="110" cy="146" rx="4" ry="5.5" fill="#16120A"/>
+          <!-- nose ring -->
+          <circle cx="100" cy="160" r="7" fill="none" stroke="#A5231A" stroke-width="2.4"/>
+        </svg>
+
+        <div class="hero__headline">
+          <h1 class="hero__h1" id="hero-h1">Tap Into Your <em>Wild</em> Side</h1>
+        </div>
+
+        <!-- BEAR EMBLEM -->
+        <svg class="emblem" viewBox="0 0 200 210" role="img" aria-label="Engraved bear crest">
+          <defs>
+            <pattern id="stipBr" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-20)">
+              <circle cx="1" cy="1" r=".7" fill="#16120A"/>
+            </pattern>
+          </defs>
+          <g fill="none" stroke="#16120A">
+            <circle cx="100" cy="102" r="94" stroke-width="2.5"/>
+            <circle cx="100" cy="102" r="87" stroke-width="1"/>
+            <circle cx="100" cy="102" r="83" stroke-width="6" stroke-dasharray="1.2 7"/>
+          </g>
+          <!-- ears -->
+          <circle cx="66" cy="72" r="20" fill="#ECE5D3" stroke="#16120A" stroke-width="2.5"/>
+          <circle cx="134" cy="72" r="20" fill="#ECE5D3" stroke="#16120A" stroke-width="2.5"/>
+          <circle cx="66" cy="72" r="10" fill="#16120A"/>
+          <circle cx="134" cy="72" r="10" fill="#16120A"/>
+          <!-- face -->
+          <path d="M100 60 C74 60 60 80 60 106 C60 138 78 164 100 172 C122 164 140 138 140 106 C140 80 126 60 100 60Z" fill="#ECE5D3" stroke="#16120A" stroke-width="2.5"/>
+          <path d="M100 60 C74 60 60 80 60 106 C60 138 78 164 100 172 C122 164 140 138 140 106 C140 80 126 60 100 60Z" fill="url(#stipBr)" opacity=".5"/>
+          <!-- brow shading -->
+          <g stroke="#16120A" stroke-width="1.5" fill="none" stroke-linecap="round">
+            <path d="M74 96 C80 92 86 92 92 96"/>
+            <path d="M108 96 C114 92 120 92 126 96"/>
+          </g>
+          <!-- eyes -->
+          <circle cx="84" cy="106" r="5.5" fill="#16120A"/>
+          <circle cx="116" cy="106" r="5.5" fill="#16120A"/>
+          <circle cx="85.6" cy="104" r="1.6" fill="#ECE5D3"/>
+          <circle cx="117.6" cy="104" r="1.6" fill="#ECE5D3"/>
+          <!-- muzzle -->
+          <ellipse cx="100" cy="140" rx="26" ry="22" fill="#ECE5D3" stroke="#16120A" stroke-width="2.2"/>
+          <path d="M88 132 C88 126 112 126 112 132 C112 140 106 146 100 146 C94 146 88 140 88 132Z" fill="#16120A"/>
+          <path d="M100 146 L100 158" stroke="#16120A" stroke-width="2" stroke-linecap="round"/>
+          <path d="M100 158 C96 164 90 164 86 160" stroke="#16120A" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M100 158 C104 164 110 164 114 160" stroke="#16120A" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <p class="hero__standfirst">Bull n Bear Brewery is a small-batch craft brewery on Springfield Avenue, a two-minute walk from the Summit train. Founder and head brewer Will pours a rotating list that runs light to dark. Unlike the market, it never closes red for long.</p>
+      <div class="hero__actions">
+        <a class="btn btn--red" href="#taps">See What's On Tap <span class="arr">→</span></a>
+        <a class="btn" href="#visit">Plan a Visit</a>
+      </div>
+    </div>
+
+    <aside class="glance" aria-label="Today's featured taps">
+      <div class="glance__h"><span>At a Glance</span><span>Today</span></div>
+      <div class="glance__row"><span><span class="nm">Rally Cap</span><br><span class="sym">RALLY · Hazy IPA</span></span><span class="mono tnum up">6.4% ▲</span></div>
+      <div class="glance__row"><span><span class="nm">Dovish</span><br><span class="sym">DOVE · Pilsner</span></span><span class="mono tnum up">4.6% ▲</span></div>
+      <div class="glance__row"><span><span class="nm">Bear Market</span><br><span class="sym">BEAR · Stout</span></span><span class="mono tnum down">6.6% ▼</span></div>
+      <div class="glance__status"><span class="dot" id="glanceDot"></span><span id="glanceStatus">Checking the hours…</span></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===================== THE BEERS ===================== -->
+<section class="section" id="taps" aria-labelledby="taps-t">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-head__t" id="taps-t">The Exchange</h2>
+      <div class="sec-head__meta">Today's Taps · Rotating<br>Prices quoted in ABV</div>
+    </div>
+    <p class="lead-in reveal"><span class="first">H</span>and-crafted and endlessly rotating, our board runs light to dark and moves with the season. A green arrow means it's trading up: bright, hoppy, fresh on. A red arrow means it's mellowing out, or nearly called. Tap any row to read the note.</p>
+
+    <div class="legend reveal" aria-hidden="true">
+      <span><span class="up">▲</span> Trending up: fresh &amp; flowing</span>
+      <span><span class="down">▼</span> Mellowing: limited pour</span>
+      <span class="mono">ABV = the quote</span>
+    </div>
+
+    <table class="table reveal" id="tapTable">
+      <thead>
+        <tr>
+          <th>Sym.</th>
+          <th>Issue</th>
+          <th class="col-style hide-sm">Style</th>
+          <th class="num">ABV</th>
+          <th class="num">Move</th>
+          <th class="num hide-sm">Avail.</th>
+        </tr>
+      </thead>
+      <tbody id="tapBody"></tbody>
+    </table>
+    <p class="visit__note reveal" style="margin-top:1.4rem">The board turns over weekly. What's poured today may be a footnote by Friday, so drink the dips.</p>
+  </div>
+</section>
+
+<!-- ===================== JOURNEY ===================== -->
+<section class="section journey" id="journey" aria-labelledby="journey-t">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-head__t" id="journey-t">Our Journey</h2>
+      <div class="sec-head__meta">The Brewery · Est. 2020<br>Tours by appointment</div>
+    </div>
+    <div class="journey__grid">
+      <div class="reveal">
+        <p class="lead-in" style="color:var(--panel-paper)"><span class="first">W</span>e opened our doors at the worst possible moment, and stayed open anyway. In the spring of 2020, while every chart on every screen was bleeding red, Will was quietly filling kegs in a corner of Summit and figuring out how to hand a stranger a beer six feet at a time.</p>
+        <div class="journey__cols">
+          <p>What started as a hedge against a very strange year turned into something real: a taproom that regulars now treat like a second living room. Every batch is small, brewed on-site, and named for the market that nearly took us out.</p>
+          <p>We don't chase trophies or trends. We chase the pour that makes a commuter miss one train on purpose. Fifteen years of brewing experience go into a list that stays deliberately short, deliberately fresh, and deliberately ours.</p>
+          <p>Curious how it's made? We run small, private brewery tours: the tanks, the process, and a few opinions about beer you didn't ask for.</p>
+        </div>
+        <div class="callout">
+          <p><strong>Private brewery tours.</strong> Small groups, behind the tanks, glass in hand.</p>
+          <a class="btn" href="#contact">Inquire About a Tour <span class="arr">→</span></a>
+        </div>
+      </div>
+
+      <figure style="margin:0" class="reveal">
+        <!-- MARKET LINE -> POUR ARC signature graphic -->
+        <svg class="pour" viewBox="0 0 400 340" role="img" aria-label="A rising market line that arcs over and pours into a beer glass">
+          <defs>
+            <linearGradient id="beer" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#E8A83C"/>
+              <stop offset="1" stop-color="#C4791E"/>
+            </linearGradient>
+            <clipPath id="glassClip"><path d="M150 214 L250 214 L240 320 Q200 332 160 320 Z"/></clipPath>
+          </defs>
+          <!-- baseline grid -->
+          <g stroke="rgba(232,224,204,.16)" stroke-width="1">
+            <line x1="20" y1="60" x2="380" y2="60"/>
+            <line x1="20" y1="120" x2="380" y2="120"/>
+            <line x1="20" y1="180" x2="380" y2="180"/>
+          </g>
+          <!-- the market line rising, then arcing to pour -->
+          <path id="pourLine" d="M24 300 L70 264 L104 282 L150 214 L188 236 L232 150 L286 92 Q330 60 330 108 Q330 150 300 168 Q262 190 214 176 L200 172"
+                fill="none" stroke="#E8776E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- pour stream into glass -->
+          <path id="pourStream" d="M200 172 C200 188 200 196 200 210" fill="none" stroke="url(#beer)" stroke-width="8" stroke-linecap="round"/>
+          <!-- glass -->
+          <path d="M150 214 L250 214 L240 320 Q200 332 160 320 Z" fill="rgba(232,224,204,.06)" stroke="#E8E0CC" stroke-width="2.5"/>
+          <!-- beer fill (animated) -->
+          <g clip-path="url(#glassClip)">
+            <rect id="beerFill" x="150" y="320" width="100" height="120" fill="url(#beer)"/>
+            <ellipse id="foam" cx="200" cy="320" rx="52" ry="9" fill="#F3ECDC" opacity="0"/>
+          </g>
+          <!-- data dots -->
+          <g fill="#E8776E">
+            <circle cx="150" cy="214" r="4"/><circle cx="232" cy="150" r="4"/><circle cx="286" cy="92" r="4"/>
+          </g>
+        </svg>
+        <figcaption class="pour-cap">Fig. 1 — The only bull run that ends in your glass.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TEAM ===================== -->
+<section class="section" id="team" aria-labelledby="team-t">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-head__t" id="team-t">The Masthead</h2>
+      <div class="sec-head__meta">Who Pours This Paper<br>Summit, NJ</div>
+    </div>
+    <div class="staff reveal">
+      <article class="member member--lead">
+        <svg class="member__seal member__seal--lead" viewBox="0 0 72 72" aria-hidden="true">
+          <defs><pattern id="stipW" width="4.5" height="4.5" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><circle cx="1" cy="1" r=".6" fill="#16120A"/></pattern></defs>
+          <circle cx="36" cy="36" r="33" fill="none" stroke="#16120A" stroke-width="2"/>
+          <circle cx="36" cy="36" r="30" fill="none" stroke="#16120A" stroke-width="4" stroke-dasharray="1 5"/>
+          <circle cx="36" cy="36" r="24" fill="#ECE5D3" stroke="#A5231A" stroke-width="1"/>
+          <circle cx="36" cy="36" r="24" fill="url(#stipW)" opacity=".22"/>
+          <!-- founder's horns cresting the seal -->
+          <path d="M28 16 C22 11 17 10 13 10 C18 13 22 17 27 21 Z" fill="#16120A"/>
+          <path d="M44 16 C50 11 55 10 59 10 C54 13 50 17 45 21 Z" fill="#16120A"/>
+          <text x="36" y="44" text-anchor="middle" font-family="Bodoni Moda,serif" font-weight="800" font-size="26" fill="#16120A">W</text>
+          <text x="36" y="57" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="5.4" letter-spacing="1.2" fill="#544A38">EST · 2020</text>
+        </svg>
+        <h3 class="member__name">Will</h3>
+        <p class="member__role">Founder &amp; Head Brewer</p>
+        <p class="member__bio">Fifteen years chasing the perfect pour and one very stubborn opinion about hop timing. Opened the doors in a down market and never looked at the ticker again. If a batch is named after a crash, it's because Will was probably brewing through it.</p>
+      </article>
+      <article class="member">
+        <svg class="member__seal" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="#16120A" stroke-width="2"/><circle cx="32" cy="32" r="27" fill="none" stroke="#16120A" stroke-width="3" stroke-dasharray="1 4.5"/><circle cx="32" cy="32" r="22" fill="none" stroke="#A5231A" stroke-width="1"/><text x="32" y="41" text-anchor="middle" font-family="Bodoni Moda,serif" font-weight="800" font-size="24" fill="#16120A">M</text></svg>
+        <h3 class="member__name">Marisol</h3>
+        <p class="member__role">Cellar &amp; Quality</p>
+        <p class="member__bio">Keeps every tank honest and every keg accountable. The reason a "limited pour" is limited and not just gone.</p>
+      </article>
+      <article class="member">
+        <svg class="member__seal" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="#16120A" stroke-width="2"/><circle cx="32" cy="32" r="27" fill="none" stroke="#16120A" stroke-width="3" stroke-dasharray="1 4.5"/><circle cx="32" cy="32" r="22" fill="none" stroke="#A5231A" stroke-width="1"/><text x="32" y="41" text-anchor="middle" font-family="Bodoni Moda,serif" font-weight="800" font-size="24" fill="#16120A">D</text></svg>
+        <h3 class="member__name">Dev</h3>
+        <p class="member__role">Taproom Floor</p>
+        <p class="member__bio">Knows your order before you do and will absolutely talk you into the stout. Runs the room like a trading floor, minus the yelling.</p>
+      </article>
+      <article class="member">
+        <svg class="member__seal" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="#16120A" stroke-width="2"/><circle cx="32" cy="32" r="27" fill="none" stroke="#16120A" stroke-width="3" stroke-dasharray="1 4.5"/><circle cx="32" cy="32" r="22" fill="none" stroke="#A5231A" stroke-width="1"/><text x="32" y="41" text-anchor="middle" font-family="Bodoni Moda,serif" font-weight="800" font-size="24" fill="#16120A">C</text></svg>
+        <h3 class="member__name">The Crew</h3>
+        <p class="member__role">Nights &amp; Weekends</p>
+        <p class="member__bio">The regulars-in-training who keep the outdoor tables turning and the playlist honest. Ask them what's about to sell out.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISIT ===================== -->
+<section class="section" id="visit" aria-labelledby="visit-t">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-head__t" id="visit-t">Trading Hours</h2>
+      <div class="sec-head__meta">Visit Us · 425 Springfield Ave<br>First come, first served</div>
+    </div>
+    <div class="visit__grid">
+      <div class="reveal">
+        <div class="hours" id="hoursBoard">
+          <div class="hours__h"><span>The Floor Is Open</span><span id="hoursNow">—</span></div>
+          <!-- rows injected by JS with today highlighted -->
+        </div>
+        <p class="visit__note" style="margin-top:1.2rem">Spacious indoor seating and a full outdoor patio. First come, first served. Parties of eight or more, please call ahead so we can hold the corner.</p>
+      </div>
+
+      <div class="visit__facts reveal">
+        <p><span class="lbl">The Address</span><span class="big">425 Springfield Avenue<br>Summit, New Jersey 07901</span></p>
+        <p><span class="lbl">The Line</span><a class="big" href="tel:+19085550199" style="text-decoration:none">(908) 555-0199</a></p>
+        <p style="margin-bottom:var(--s3)"><span class="lbl">Getting Here</span>A two-minute walk from Summit Station, the last stop before the good stuff on the Morris &amp; Essex line.</p>
+        <!-- stylized locator map -->
+        <svg class="map" viewBox="0 0 400 240" role="img" aria-label="Locator map: Bull n Bear Brewery on Springfield Avenue, near Summit Station">
+          <rect width="400" height="240" fill="#E3DAC3"/>
+          <g stroke="#C6B89A" stroke-width="10" fill="none">
+            <line x1="-10" y1="150" x2="410" y2="120"/>
+            <line x1="90" y1="-10" x2="150" y2="250"/>
+            <line x1="260" y1="-10" x2="300" y2="250"/>
+          </g>
+          <g stroke="#CFC2A4" stroke-width="4" fill="none">
+            <line x1="-10" y1="70" x2="410" y2="52"/>
+            <line x1="-10" y1="210" x2="410" y2="196"/>
+          </g>
+          <!-- rail line -->
+          <line x1="-10" y1="30" x2="410" y2="18" stroke="#16120A" stroke-width="2" stroke-dasharray="10 6"/>
+          <rect x="40" y="8" width="14" height="14" fill="#16120A" transform="rotate(-2 47 15)"/>
+          <text x="62" y="20" font-family="JetBrains Mono,monospace" font-size="10" fill="#16120A">SUMMIT STATION</text>
+          <!-- street label -->
+          <text x="200" y="140" font-family="JetBrains Mono,monospace" font-size="10" fill="#7A7059" transform="rotate(-4 200 140)">SPRINGFIELD AVE</text>
+          <!-- marker -->
+          <g>
+            <path d="M210 150 C210 135 232 135 232 150 C232 164 221 178 221 178 C221 178 210 164 210 150Z" fill="#A5231A"/>
+            <circle cx="221" cy="150" r="6" fill="#ECE5D3"/>
+          </g>
+          <text x="221" y="200" text-anchor="middle" font-family="Bodoni Moda,serif" font-weight="700" font-size="14" fill="#16120A">Bull n Bear</text>
+        </svg>
+        <a class="btn btn--red" style="margin-top:var(--s3)" href="https://www.google.com/maps/search/?api=1&query=425+Springfield+Avenue+Summit+NJ" target="_blank" rel="noopener">Get Directions <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EVENTS ===================== -->
+<section class="section" id="events" aria-labelledby="events-t">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-head__t" id="events-t">Notices &amp; Announcements</h2>
+      <div class="sec-head__meta">Events · All Year<br>Private bookings welcome</div>
+    </div>
+    <div class="notices reveal">
+      <article class="notice">
+        <p class="notice__date">Every Thursday</p>
+        <h3 class="notice__t">Fresh-Release Thursdays</h3>
+        <p class="notice__d">First pour of whatever came off the tanks this week. Get there early; the good ones trade fast.</p>
+      </article>
+      <article class="notice">
+        <p class="notice__date">Monthly · Second Saturday</p>
+        <h3 class="notice__t">Makers on the Patio</h3>
+        <p class="notice__d">Local vendors, live music, and a long table on the outdoor floor. Summit's worst-kept secret.</p>
+      </article>
+      <article class="notice">
+        <p class="notice__date">Seasonal</p>
+        <h3 class="notice__t">The Bear Market Release</h3>
+        <p class="notice__d">Our barrel-aged imperial stout, poured one weekend only. When it's called, it's called.</p>
+      </article>
+      <article class="notice">
+        <p class="notice__date">By Appointment</p>
+        <h3 class="notice__t">Behind-the-Tanks Tours</h3>
+        <p class="notice__d">Small-group walks through the brewhouse with a beer in hand and Will doing the talking.</p>
+      </article>
+      <div class="private">
+        <div>
+          <h3>Book the Floor</h3>
+          <p>Birthdays, team offsites, or a very serious tasting committee. Reserve a corner or the whole taproom for your private event.</p>
+        </div>
+        <a class="btn" href="#contact">Enquire About Private Events <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <div class="foot__title">Bull<span class="amp">n</span>Bear</div>
+        <p class="foot__tag">Make sure your beer supply won't run dry.</p>
+        <form class="news" id="newsForm" novalidate>
+          <label for="newsEmail" class="skip">Email address for the newsletter</label>
+          <input id="newsEmail" type="email" placeholder="your@email.com" autocomplete="email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="news__msg" id="newsMsg" role="status" aria-live="polite"></p>
+      </div>
+      <div>
+        <h4>The Taproom</h4>
+        <ul>
+          <li>425 Springfield Avenue</li>
+          <li>Summit, New Jersey 07901</li>
+          <li><a href="tel:+19085550199">(908) 555-0199</a></li>
+          <li><a href="mailto:cheers@bullnbear.beer">cheers@bullnbear.beer</a></li>
+        </ul>
+      </div>
+      <div class="foot__social">
+        <h4>Follow the Market</h4>
+        <ul>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a></li>
+          <li><a href="https://facebook.com" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 3h-3a4 4 0 0 0-4 4v3H5v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Facebook</a></li>
+          <li><a href="https://x.com" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 3h3l-6.6 7.5L21.5 21h-5.9l-4.2-5.5L6.4 21H3.4l7-8L2.5 3h6l3.8 5z"/></svg>Twitter / X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>&copy; <span id="year"></span> Bull n Bear Brewery · Summit, NJ</span>
+      <span>Please drink responsibly · 21+</span>
+      <span>A Craft Daily, Printed Fresh</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) || /[?&]capture/.test(location.search);
+
+  /* ---- Tap data (illustrative brand language, not a published menu) ---- */
+  var taps = [
+    {sym:"DOVE", nm:"Dovish", st:"Czech-Style Pilsner", abv:"4.6", mv:0.4, av:"12 kegs", note:"Crisp, soft, and endlessly sessionable. The dove that keeps the peace on a hot patio.", pair:"Light · Crushable · House staple"},
+    {sym:"RALLY", nm:"Rally Cap", st:"Hazy IPA", abv:"6.4", mv:1.2, av:"8 kegs", note:"Juicy, pillowy, and loud about it. Mango and pine with a soft landing.", pair:"Hazy · Hoppy · Best-seller"},
+    {sym:"BULLP", nm:"Bullpen Session", st:"West Coast IPA", abv:"6.8", mv:0.6, av:"6 kegs", note:"Dry, resinous, and bracingly bitter, a proper West Coast fastball.", pair:"Dank · Dry · For the purists"},
+    {sym:"HEDGE", nm:"Hedge Fund", st:"Farmhouse Saison", abv:"5.8", mv:-0.3, av:"4 kegs", note:"Peppery and dry with a bright, spritzy finish. Diversified, obviously.", pair:"Rustic · Effervescent · Mellowing"},
+    {sym:"MARGN", nm:"Margin Call", st:"Amber Ale", abv:"5.4", mv:0.2, av:"9 kegs", note:"Toasty caramel malt with just enough hop to balance the books.", pair:"Malty · Smooth · Easy money"},
+    {sym:"SHORT", nm:"Short Squeeze", st:"Kettle Sour", abv:"4.9", mv:0.8, av:"5 kegs", note:"Tart, fruit-forward, and gone before you can cover. This week: raspberry.", pair:"Sour · Bright · Rotating fruit"},
+    {sym:"BEAR", nm:"Bear Market", st:"Oatmeal Stout", abv:"6.6", mv:-0.4, av:"3 kegs", note:"Roasty, silky, and dark as a Monday open. Chocolate, coffee, quiet confidence.", pair:"Dark · Roasty · Limited"},
+    {sym:"LIQID", nm:"Liquidity", st:"Barrel-Aged Imperial Stout", abv:"11.2", mv:0.9, av:"Bottles only", note:"Bourbon-barrel aged for a year. Rich, boozy, and absolutely worth the position.", pair:"Big · Boozy · Seasonal rarity"}
+  ];
+
+  /* ---- Ticker ---- */
+  function buildTicker(){
+    var html = taps.map(function(t){
+      var up = t.mv >= 0;
+      return '<span class="tick"><b>'+t.sym+'</b> <span class="tnum">'+t.abv+'%</span> <span class="'+(up?'up':'down')+'">'+(up?'▲':'▼')+' '+Math.abs(t.mv).toFixed(1)+'</span></span>';
+    }).join("");
+    var extra = '<span class="tick"><b>SUMMIT</b> <span>NJ</span></span><span class="tick"><b>ON TAP NOW</b> <span class="up">▲ OPEN</span></span>';
+    document.getElementById("tickerSet").innerHTML = html + extra;
+    document.getElementById("tickerSet2").innerHTML = html + extra;
+  }
+  buildTicker();
+
+  /* ---- Tap table ---- */
+  function buildTable(){
+    var body = document.getElementById("tapBody");
+    var rows = "";
+    taps.forEach(function(t,i){
+      var up = t.mv >= 0;
+      rows += '<tr class="tap" tabindex="0" role="button" aria-expanded="false" aria-controls="d'+i+'" data-i="'+i+'">'
+        + '<td class="sym">'+t.sym+'</td>'
+        + '<td><span class="nm">'+t.nm+'</span><span class="st st-mobile">'+t.st+'</span></td>'
+        + '<td class="col-style st">'+t.st+'</td>'
+        + '<td class="num tnum">'+t.abv+'%</td>'
+        + '<td class="num move '+(up?'up':'down')+'"><span class="tnum">'+(up?'+':'−')+Math.abs(t.mv).toFixed(1)+'</span> <span class="glyph">'+(up?'▲':'▼')+'</span></td>'
+        + '<td class="num avail hide-sm">'+t.av+'</td>'
+        + '</tr>'
+        + '<tr class="detail"><td colspan="6" id="d'+i+'"><div class="detail__in"><div class="detail__body">'
+        + '<p class="detail__note">'+t.note+'</p>'
+        + '<p class="detail__facts">'+t.pair+' &nbsp;·&nbsp; '+t.abv+'% ABV &nbsp;·&nbsp; '+t.av+'</p>'
+        + '</div></div></td></tr>';
+    });
+    body.innerHTML = rows;
+
+    function toggle(tr){
+      var open = tr.classList.contains("is-open");
+      // close others
+      body.querySelectorAll(".tap.is-open").forEach(function(o){ if(o!==tr){o.classList.remove("is-open");o.setAttribute("aria-expanded","false");} });
+      tr.classList.toggle("is-open", !open);
+      tr.setAttribute("aria-expanded", String(!open));
+    }
+    body.querySelectorAll(".tap").forEach(function(tr){
+      tr.addEventListener("click", function(){ toggle(tr); });
+      tr.addEventListener("keydown", function(e){
+        if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(tr); }
+      });
+    });
+  }
+  buildTable();
+
+  /* ---- Hours + open-now ---- */
+  var schedule = [
+    {d:"Sunday",   o:12, c:18},
+    {d:"Monday",   o:null, c:null},
+    {d:"Tuesday",  o:16, c:22},
+    {d:"Wednesday",o:16, c:22},
+    {d:"Thursday", o:16, c:22},
+    {d:"Friday",   o:16, c:23},
+    {d:"Saturday", o:12, c:23}
+  ];
+  function fmt(h){
+    if(h===null) return "Closed";
+    var ap = h>=12?"PM":"AM"; var hh = h%12; if(hh===0) hh=12;
+    return hh+":00 "+ap;
+  }
+  function buildHours(){
+    var now = new Date();
+    var day = now.getDay();
+    var hour = now.getHours() + now.getMinutes()/60;
+    var board = document.getElementById("hoursBoard");
+    var order = [2,3,4,5,6,0,1]; // Tue..Sun then Mon, reads like a week's trading calendar
+    var rowsHtml = "";
+    order.forEach(function(idx){
+      var s = schedule[idx];
+      var isToday = idx===day;
+      var closed = s.o===null;
+      var range = closed ? "Closed" : (fmt(s.o)+" – "+fmt(s.c));
+      var label = s.d.slice(0,3);
+      rowsHtml += '<div class="hours__row'+(isToday?' is-today':'')+(closed?' closed':'')+'"><span class="day">'+(isToday?'▸ ':'')+label+'</span><span class="tnum">'+range+'</span></div>';
+    });
+    // hours__h already there; append rows after it
+    board.insertAdjacentHTML("beforeend", rowsHtml);
+
+    // status
+    var s = schedule[day];
+    var openNow = s.o!==null && hour>=s.o && hour<s.c;
+    var statusEl = document.getElementById("hoursNow");
+    var gStatus = document.getElementById("glanceStatus");
+    var gDot = document.getElementById("glanceDot");
+    var msg;
+    if(openNow){
+      msg = "Open now · until "+fmt(s.c);
+      gDot.className = "dot dot--open";
+    } else {
+      // find next opening
+      var nextTxt = "";
+      for(var k=0;k<7;k++){
+        var ni=(day+k)%7; var ns=schedule[ni];
+        if(ns.o!==null && !(k===0 && hour<ns.o)===false){ /* handled below */ }
+      }
+      // simpler: scan forward including today-if-before-open
+      for(var j=0;j<8;j++){
+        var ni2=(day+j)%7; var ns2=schedule[ni2];
+        if(ns2.o===null) continue;
+        if(j===0 && hour<ns2.o){ nextTxt = "Opens today "+fmt(ns2.o); break; }
+        if(j>0){ nextTxt = "Opens "+ns2.d.slice(0,3)+" "+fmt(ns2.o); break; }
+      }
+      msg = "Closed · "+nextTxt;
+      gDot.className = "dot dot--closed";
+    }
+    statusEl.textContent = openNow ? "Open" : "Closed";
+    gStatus.textContent = msg;
+  }
+  buildHours();
+
+  /* ---- Dateline (today's date) ---- */
+  (function(){
+    var d = new Date();
+    var months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+    var days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    document.getElementById("dateLeft").textContent = days[d.getDay()]+", "+months[d.getMonth()]+" "+d.getDate();
+    var y=document.getElementById("year"); if(y) y.textContent = d.getFullYear();
+  })();
+
+  /* ---- Newsletter ---- */
+  var form = document.getElementById("newsForm");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var email = document.getElementById("newsEmail");
+    var msg = document.getElementById("newsMsg");
+    var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+    if(!ok){ msg.style.color="#E8776E"; msg.textContent="Enter a valid email to get the morning edition."; email.focus(); return; }
+    msg.style.color="#57C486"; msg.textContent="You're on the list. First pour, first to know.";
+    email.value="";
+  });
+
+  /* ---- Nav active section ---- */
+  var links = Array.prototype.slice.call(document.querySelectorAll(".nav__links a"));
+  var ids = links.map(function(a){ return a.getAttribute("href").slice(1); });
+  var secObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var id = en.target.id;
+        links.forEach(function(a){ a.setAttribute("aria-current", a.getAttribute("href")==="#"+id ? "true":"false"); });
+      }
+    });
+  }, {rootMargin:"-45% 0px -50% 0px"});
+  ids.forEach(function(id){ var el=document.getElementById(id); if(el) secObserver.observe(el); });
+
+  /* ---- Reveal on scroll ---- */
+  if(reduce){
+    document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); revObs.unobserve(en.target); } });
+    }, {rootMargin:"0px 0px -12% 0px"});
+    document.querySelectorAll(".reveal").forEach(function(el){ revObs.observe(el); });
+  }
+
+  /* ---- Signature: draw the market-line/pour and fill the glass ---- */
+  (function(){
+    var line = document.getElementById("pourLine");
+    var stream = document.getElementById("pourStream");
+    var fill = document.getElementById("beerFill");
+    var foam = document.getElementById("foam");
+    if(!line) return;
+    if(reduce){
+      // static, already-poured state
+      fill.setAttribute("y","236"); fill.setAttribute("height","84");
+      foam.setAttribute("opacity","1");
+      return;
+    }
+    var lineLen = line.getTotalLength();
+    line.style.strokeDasharray = lineLen; line.style.strokeDashoffset = lineLen;
+    var streamLen = stream.getTotalLength();
+    stream.style.strokeDasharray = streamLen; stream.style.strokeDashoffset = streamLen;
+
+    var played = false;
+    function play(){
+      if(played) return; played = true;
+      line.animate([{strokeDashoffset:lineLen},{strokeDashoffset:0}],{duration:1500,easing:"cubic-bezier(.16,1,.3,1)",fill:"forwards"});
+      setTimeout(function(){
+        stream.animate([{strokeDashoffset:streamLen},{strokeDashoffset:0}],{duration:500,easing:"ease-in",fill:"forwards"});
+      },1300);
+      setTimeout(function(){
+        // fill glass: y from 320 up to ~236, height grows
+        var start=null, dur=1400;
+        function step(ts){
+          if(!start) start=ts;
+          var p=Math.min((ts-start)/dur,1);
+          var ease = 1-Math.pow(1-p,3);
+          var y = 320 - ease*84;
+          fill.setAttribute("y", y.toFixed(1));
+          fill.setAttribute("height",(320-y+2).toFixed(1));
+          foam.setAttribute("cy", y.toFixed(1));
+          foam.setAttribute("opacity", Math.min(ease*1.4,1).toFixed(2));
+          if(p<1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      },1700);
+    }
+    var po = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ play(); po.disconnect(); } });
+    },{threshold:.4});
+    po.observe(line.closest("svg"));
+  })();
+
+})();
+</script>
+</body>
+</html>
