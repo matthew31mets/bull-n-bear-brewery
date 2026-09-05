@@ -275,18 +275,6 @@ html{scroll-behavior:smooth}
   .st-mobile{display:block}
 }
 
-/* ---------- EXCHANGE VIEW TOGGLE ---------- */
-.exch-head{display:flex;align-items:flex-end;gap:var(--s3);flex-wrap:wrap;justify-content:flex-end}
-.exch-toggle{display:inline-flex;border:2px solid var(--rule);background:var(--paper)}
-.exch-toggle__btn{
-  font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
-  background:transparent;color:var(--ink-2);border:0;padding:.55rem 1rem;min-height:40px;cursor:pointer;
-  transition:background .15s ease,color .15s ease;
-}
-.exch-toggle__btn + .exch-toggle__btn{border-left:2px solid var(--rule)}
-.exch-toggle__btn:hover{color:var(--ink)}
-.exch-toggle__btn.is-active{background:var(--ink);color:var(--paper)}
-
 /* ---------- BEER CAN GRID ---------- */
 .labels{display:grid;grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:0;border-top:1px solid var(--rule-soft);border-left:1px solid var(--rule-soft)}
 .labels[hidden]{display:none}
